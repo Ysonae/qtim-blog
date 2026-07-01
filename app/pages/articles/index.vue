@@ -29,7 +29,7 @@ useSeoMeta({
 
 <template>
   <section class="container max-w-295 mx-auto py-15 lg:py-30 px-4 sm:px-5">
-    <h1 class="mb-15 text-ink text-[82px]">Articles</h1>
+    <h1 class="mb-15 text-ink text-5xl lg:text-[82px]">Articles</h1>
     <p v-if="pending">Loading...</p>
     <p v-else-if="error">Failed to load articles</p>
 

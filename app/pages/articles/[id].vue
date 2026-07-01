@@ -20,9 +20,9 @@ useSeoMeta({
 <template>
   <article
     v-if="post"
-    class="container max-w-295 mx-auto py-20 lg:py-30 px-4 sm:px-5 flex flex-col"
+    class="container max-w-295 mx-auto py-15 lg:py-30 px-4 sm:px-5 flex flex-col"
   >
-    <h1 class="text-ink text-[41px] lg:text-[82px]">
+    <h1 class="text-ink text-5xl lg:text-[82px]">
       {{ post.title }}
     </h1>
     <img

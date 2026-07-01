@@ -14,7 +14,7 @@ watch(
 </script>
 
 <template>
-  <header class="px-10 py-9 flex relative">
+  <header class="px-4 py-5 lg:px-10 lg:py-9 flex sticky top-0 z-40 bg-white">
     <div class="flex items-center w-full justify-between">
       <NuxtLink to="/articles">
         <img src="~/assets/svg/qtim-logo.svg" alt="Logotype" />
@@ -68,7 +68,7 @@ watch(
 
     <div
       v-show="isOpen"
-      class="absolute top-full left-0 w-full px-10 pb-9 flex flex-col gap-y-6 shadow-xl bg-white lg:hidden"
+      class="absolute top-full left-0 w-full px-4 py-5 flex flex-col gap-y-6 shadow-xl bg-white lg:hidden"
     >
       <nav class="flex flex-col gap-y-4" aria-label="Mobile">
         <a
@@ -80,7 +80,7 @@ watch(
         >
       </nav>
 
-      <div class="flex items-center gap-x-4">
+      <div class="flex items-center justify-between gap-x-4">
         <button
           type="button"
           class="flex h-13 w-13 items-center justify-center rounded-full border-2 border-surface cursor-pointer"
@@ -89,7 +89,7 @@ watch(
           <img src="~/assets/svg/english-language.svg" alt="English" />
         </button>
 
-        <UiBaseButton to="/articles">Let`s work</UiBaseButton>
+        <UiBaseButton to="mailto:qtim@agency.com">Let's work</UiBaseButton>
       </div>
     </div>
   </header>
