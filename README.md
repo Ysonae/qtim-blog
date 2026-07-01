@@ -1,75 +1,53 @@
-# Nuxt Minimal Starter
+# QTIM Blog - тестовое задание
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Блог со списком статей и детальными страницами. Данные - из публичного mock API,
+пагинация на клиенте, адаптив, SSR.
 
-## Setup
+## Стек
 
-Make sure to install dependencies:
+- Nuxt 4
+- TypeScript
+- Tailwind CSS
+
+## Запуск
 
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+Требуется Node.js 20+
 
-Build the application for production:
+## API
 
-```bash
-# npm
-npm run build
+Данные: https://6082e3545dbd2c001757abf5.mockapi.io/qtim-test-work/posts
 
-# pnpm
-pnpm build
+## Функциональность
 
-# yarn
-yarn build
+- Список статей /articles - карточки с ховер-эффектом, клиентская пагинация.
+- Детальная страница /articles/:id - отдельный запрос по id, обработка 404.
+- Адаптив — десктоп/планшет/мобилка.
+- SEO — useSeoMeta (title/description/OG) на обеих страницах, SSR-рендер.
+- Кастомная страница ошибки (error.vue) для 404.
+- Редирект / > /articles.
 
-# bun
-bun run build
-```
+## Принятые решения
 
-Locally preview production build:
+- Пагинация на клиенте. По ТЗ пагинация только фронтовая, поэтому весь массив
+  тянется одним запросом (useFetch с key для кэша), а нарезка - в computed.
+  Номер страницы хранится в URL, сохраняем состояние при перезагрузки и прогулке по истории.
 
-```bash
-# npm
-npm run preview
+- Без FSD/Pinia/i18n. Под объём задачи осознанно решил, что слишком избыточно.
+  Серверные данные кэширует сам Nuxt через useFetch/useState, глобального
+  клиентского состояния нет. FSD не применялся осознанно - оверхед под масштаб.
 
-# pnpm
-pnpm preview
+- Картинки. В mock API поля image ведут на недоступный сервис, поэтому
+  использованы свои изображения, распределил по статьям с помощью утилиты articleImg.ts.
 
-# yarn
-yarn preview
+- Переключатель языка/пункты Works, About свёрстаны по макету, но не
+  функциональны - мультиязычность и эти разделы вне тестового задания.
 
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- Макет. Содержит несимметричные отступы и мелкие несостыковки. Где это
+  выглядело как погрешность - приводил к согласованной сетке, где могло быть
+  намеренным - сохранял. Доступ к Figma был только на просмотр, часть значений
+  снималась визуально, поэтому вёрстка близка к макету, но не pixel-perfect.

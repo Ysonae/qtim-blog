@@ -18,10 +18,17 @@ const paginated = computed(() => {
 const goToPage = (n: number) => {
   router.push({ query: n > 1 ? { page: n } : {} });
 };
+
+useSeoMeta({
+  title: "Articles",
+  description: "QTIM blog — articles about software design",
+  ogTitle: "Articles — QTIM",
+  ogType: "website",
+});
 </script>
 
 <template>
-  <section class="container max-w-295 mx-auto py-30 px-4 sm:px-5">
+  <section class="container max-w-295 mx-auto py-15 lg:py-30 px-4 sm:px-5">
     <h1 class="mb-15 text-ink text-[82px]">Articles</h1>
     <p v-if="pending">Loading...</p>
     <p v-else-if="error">Failed to load articles</p>
@@ -34,5 +41,12 @@ const goToPage = (n: number) => {
         <ArticleCard :post="post" />
       </li>
     </ul>
+    <UiBasePagination
+      v-if="totalPages > 1"
+      class="mt-12.5"
+      :total-pages="totalPages"
+      :page="page"
+      @change="goToPage"
+    />
   </section>
 </template>
